@@ -75,6 +75,105 @@ Therefore:
 
 > In an object-oriented program, UI, database, and other support code often gets written directly into the business objects. Additional business logic is embedded in the behavior of UI widgets and database scripts. This happens because it is the easiest way to make things work, in the short run.
 
+Therefor:
+
+- **<u>Isolate</u>** the expression of the **domain model** and the **business logic**
+- **Eliminate** any dependency on **infrastructure**, **user interface**, or even **application logic** that is not business logic.
+- **Partition**	a	complex	program	**into layers**
+- Develop	a	design	within	each	layer	that	is	
+cohesive	and	that	**depends	only	on	the	layers	below**
+- Follow	standard	architectural	patterns	
+to	 provide	 loose	 coupling	 to	 the	 layers	 above
+- **Concentrate	all	the	code related to	the <u>domain model</u> in one layer** and **<u>isolate</u>** it from the **<u>user interface</u>**, **<u>application</u>**, and **<u>infrastructure</u>** code.
+- The domain objects, free of the responsibility of displaying themselves, storing themselves, managing application tasks, and so forth, can be focused on expressing the domain model. This allows a model to evolve to be rich enough and clear enough to capture essential business knowledge and put it to work.
+
+>> The key goal here is **<u>isolation</u>**. Related patterns, such as **“Hexagonal Architecture”** may serve as well or better to the degree that they allow our domain model expressions to avoid dependencies on and references to other system concerns
+
+**Example**:
+
+- UI Layer or Presentation Layer : Responsible for showing information to the user and interpreting the
+user’s commands. The external actor might sometimes be another computer system rather than a human user.
+
+==> Usually is view ( in MVC )
+
+- Application Layer : Defines the jobs the software is supposed to do and directs the expressive domain objects to work out problems. The tasks this layer is
+responsible for are meaningful to the business or necessary for
+interaction with the application layers of other systems. This layer is
+kept thin. It does not contain business rules or knowledge, but only
+coordinates tasks and delegates work to collaborations of domain
+objects in the next layer down. It does not have state reflecting the
+business situation, but it can have state that reflects the progress of a
+task for the user or the program
+
+==> Usually is the controller layer ( in MVC )
+
+- Domain Layer (aka Model Layer) : Responsible for representing concepts of the business, informationabout the business situation, and business rules. State that reflects the
+business situation is controlled and used here, even though the technical
+details of storing it are delegated to the infrastructure. This layer is the
+heart of business software
+
+==> Usually is model layer ( in MVC )
+
+- Infrastructure Layer : Provide generic technical capabilities that support the higher layers:
+message sending for the application, persistence for the domain,
+drawing widgets for the UI, etc. The infrastructure layer may also
+support the pattern of interactions between the four layers through an
+architectural framework.
+
+==> Eg: Helpers, Services like : email, sms, auth
+
+> Some projects don’t make a sharp distinction between User Interface and Application. Others have multiple
+Infrastructure layers. But it is the crucial separation of the domain layer that enables MODEL-DRIVEN
+DESIGN.
+
+==> Eg: REST APIs
+
+### Express Model With
+
+- Entities
+- Value Objects
+- Services
+
+#### Entities
+
+- When an object is distinguished by its identity, rather than its attributes, make this primary to its definition in the model. Keep the class definition simple and focused on life cycle continuity and identity.
+- Define a means of distinguishing each object regardless of its form or history. Be alert to requirements that call for matching objects by attributes. Define an operation that is guaranteed to produce a unique result for each object, possibly by attaching a symbol that is guaranteed unique. This means of identification may come from the outside, or it may be an arbitrary identifier created by and for the system, but it must correspond to the identity distinctions in the model.
+
+> **The model must define what it means to be the same thing**
+
+Aka Reference Objects
+
+#### Value Objects
+
+> When you care only about the attributes and logic of an element of the model, classify it as a value object. Make it express the meaning of the attributes it conveys and give it related functionality. Treat the value object as immutable. Make all operations Side-effect-free Functions that don’t depend on any mutable state. Don’t give a value object any identity and avoid the design complexities necessary to maintain entities.
+
+>> **if you can’t make a value object immutable, then it is not a value object.**
+
+>> **if you can safely replace an instance of a class with another one which has the same set of attributes, that’s a good sign this concept is a value object.**
+
+How to store value objects in the database?
+
+Let’s say we have two classes in our domain model: Person entity and Address value object:
+
+```c#
+// Entity
+public class Person
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public Address Address { get; set; }
+}
+ 
+// Value Object
+public class Address
+{
+    public string City { get; set; }
+    public string ZipCode { get; set; }
+}`
+```
+
+>> **Don’t introduce separate tables for value objects, just inline them into the parent entity’s table.**
+
 ##### Refs:
 
 - Domain Driven Design - Eric Evans ( 2003 )
