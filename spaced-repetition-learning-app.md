@@ -105,8 +105,6 @@ In this step, the user domains had been explored:
 - Quiz
 - Lession
 
-!["Domain Models version 2020-02-21"][./assets/images/spl-domain-models-v2020-02-21.jpg]
-
 ### Generic SubDomains:
 
 - Secured User
@@ -121,6 +119,10 @@ In this step, the user domains had been explored:
 [spl_explore_domains]: ./assets/images/spl-explore-domains.png
 
 ## II. Define Model with Ubitiquous Language
+
+!["Domain Models version 2020-02-21"][spl_domain_models_v1]
+
+[spl_domain_models_v1]: ./assets/images/spl-domain-models-v2020-02-21.jpg
 
 
 
