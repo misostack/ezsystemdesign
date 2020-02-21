@@ -242,3 +242,17 @@ Getting start with **Domain Services**
 [system_design_visualization]: ./assets/images/system-design-visualization.png
 
 
+## Practices
+
+**Design system using some DDD's essential points**
+
+1. User Domains
+2. Ubiquitous Language (use to define model)
+3. Layers ( use to isolate domain )
+4. Entities
+5. Value Objects
+6. Services
+7. Domain Events ( express model )
+8. Repositories
+9. Aggregates
+10. Factories
