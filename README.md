@@ -174,6 +174,43 @@ public class Address
 
 >> **Don’t introduce separate tables for value objects, just inline them into the parent entity’s table.**
 
+#### Services
+
+>> **When a significant process or transformation in the domain is not a natural responsibility of an entity or value object, add an operation to the model as a standalone interface declared as a service.**
+
+Services can be existed in 3 layers : application, domain, infrastructure
+
+And a good Service has these characteristics:
+
+- The operation relates to a domain concept that is not a natural part of an Entity or Value Object
+- The interface is defined in terms of other elements in the domain model
+- The operation is stateless
+
+**Refs:**
+
+- https://developer20.com/services-in-ddd-finally-explained/
+- http://blog.sapiensworks.com/tags.html#Domain%20driven%20design
+- https://lostechies.com/jimmybogard/2008/08/21/services-in-domain-driven-design/
+- https://stackoverflow.com/questions/46338522/what-does-exactly-domain-service-mean-in-ddd-and-how-to-implement-it
+- https://blog.sapiensworks.com/post/2016/08/19/DDD-Application-Services-Explained
+- https://softwareengineering.stackexchange.com/questions/330378/ddd-where-to-use-infrastructure-services
+- http://gorodinski.com/blog/2012/04/14/services-in-domain-driven-design-ddd/
+
+**The different approaches**
+
+- https://hackernoon.com/you-dont-need-a-domain-service-class-in-ddd-9ecd3140782
+
+Getting start with **Domain Services**
+
+>> 
+
+
+#### Domain Events
+
+- https://martinfowler.com/eaaDev/DomainEvent.html
+- http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/
+- https://enterprisecraftsmanship.com/posts/domain-events-simple-reliable-solution/
+
 ##### Refs:
 
 - Domain Driven Design - Eric Evans ( 2003 )
@@ -203,3 +240,5 @@ public class Address
 - https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164
 
 [system_design_visualization]: ./assets/images/system-design-visualization.png
+
+
