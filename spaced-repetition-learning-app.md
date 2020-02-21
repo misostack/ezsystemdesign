@@ -19,4 +19,4 @@
 [spaced_repetition_learning_app]: ./assets/images/headfirst-mvc-laravel-spaced-repetition-learning.png
 
 [spl_domains]: ./assets/images/spaced-repetition-learning-app-domains.jpg
-[spl_explore_domains]: ./assets/images/spl-explore-domains.jpg
+[spl_explore_domains]: ./assets/images/spl-explore-domains.png
